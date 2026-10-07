@@ -1,0 +1,60 @@
+<h1>To Do List</h1>
+
+<div class="todo-layout">
+  <!-- List view -->
+  <table class="todo-list">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th class="completed-cell">Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items()"
+          (click)="selectItem(item)"
+          [class.selected]="isSelected(item)">
+        <td class="name-cell">
+          <span *ngIf="editingId() !== item.id">{{ item.itemName }}</span>
+          <input *ngIf="editingId() === item.id"
+                 #editInput
+                 type="text"
+                 [ngModel]="editName()"
+                 (ngModelChange)="editName.set($event)"
+                 (keyup.enter)="saveEdit(item)"
+                 (click)="$event.stopPropagation()" />
+        </td>
+        <td class="completed-cell">
+          <input type="checkbox"
+                 [checked]="item.isCompleted"
+                 (change)="toggleCompleted(item, $event)"
+                 (click)="$event.stopPropagation()" />
+        </td>
+      </tr>
+      <tr *ngIf="items().length === 0">
+        <td colspan="2"><em>No items yet.</em></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Controls -->
+  <div class="todo-controls">
+    <label for="addItemBox">Add item</label>
+    <input id="addItemBox"
+           type="text"
+           [ngModel]="newItemName()"
+           (ngModelChange)="newItemName.set($event); addAttempted.set(false)"
+           (keyup.enter)="addItem()"
+           [class.invalid]="addAttempted() && !newItemName().trim()" />
+    <button type="button" (click)="addItem()">Add</button>
+
+    <button type="button"
+            class="edit-button"
+            [disabled]="!selectedItem()"
+            (click)="startEdit()">Edit</button>
+
+    <button type="button"
+            class="delete-button"
+            [disabled]="!selectedItem()"
+            (click)="deleteSelected()">Delete</button>
+  </div>
+</div>

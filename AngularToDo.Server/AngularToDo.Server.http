@@ -1,0 +1,29 @@
+@AngularToDo.Server_HostAddress = http://localhost:5054
+
+GET {{AngularToDo.Server_HostAddress}}/api/todo
+Accept: application/json
+
+###
+
+POST {{AngularToDo.Server_HostAddress}}/api/todo
+Content-Type: application/json
+
+{ "itemName": "Clean oven", "isCompleted": 0 }
+
+###
+
+GET {{AngularToDo.Server_HostAddress}}/api/todo/1
+Accept: application/json
+
+###
+
+PUT {{AngularToDo.Server_HostAddress}}/api/todo/1
+Content-Type: application/json
+
+{ "itemName": "Clean oven", "isCompleted": 1 }
+
+###
+
+DELETE {{AngularToDo.Server_HostAddress}}/api/todo/1
+
+###

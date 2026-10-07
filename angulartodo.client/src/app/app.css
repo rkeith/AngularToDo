@@ -1,0 +1,92 @@
+:host {
+    display: block;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.todo-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.todo-list {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+}
+
+.todo-list th,
+.todo-list td {
+    border: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+.todo-list .completed-cell,
+.todo-list th.completed-cell {
+    width: 1%;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.todo-list th {
+    background: #f0f0f0;
+}
+
+.todo-list tbody tr {
+    cursor: pointer;
+}
+
+.todo-list tbody tr:hover {
+    background: #f8f8f8;
+}
+
+.todo-list tr.selected {
+    background: #dbeafe;
+}
+
+.completed-cell {
+    text-align: center;
+}
+
+.name-cell input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.todo-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 14rem;
+}
+
+.todo-controls label {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.todo-controls input[type="text"],
+.todo-controls input:not([type]) {
+    padding: 0.4rem;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+.todo-controls input.invalid {
+    outline: 2px solid red;
+    border-color: red;
+}
+
+.todo-controls button {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.todo-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

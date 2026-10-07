@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="angulartodo.client/angulartodo.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="AngularToDo.Server/AngularToDo.Server.csproj" />
+</Solution>
